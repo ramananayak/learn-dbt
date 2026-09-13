@@ -1,0 +1,37 @@
+# Python Virtual Environments
+venv/
+.venv/
+practice/venv/
+__pycache__/
+*.pyc
+
+# dbt Artifacts & Logs
+target/
+**/target/
+dbt_packages/
+**/dbt_packages/
+logs/
+**/logs/
+.user.yml
+**/.user.yml
+.tmp_home/
+**/.tmp_home/
+state_artifacts/
+**/state_artifacts/
+*.bak
+
+# DuckDB Databases
+*.duckdb
+*.duckdb.wal
+
+# Airflow Local Artifacts
+airflow/logs/
+**/airflow/logs/
+airflow/standalone_admin_password.txt
+airflow/airflow.cfg
+airflow/airflow.db
+
+# Environment & OS
+.env
+*.env
+.DS_Store

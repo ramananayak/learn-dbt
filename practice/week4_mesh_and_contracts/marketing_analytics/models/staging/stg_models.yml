@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: marketing_raw
+    schema: "main_raw"
+    tables:
+      - name: raw_customer_segments
+        identifier: raw_customer_segments
+        columns:
+          - name: customer_id
+            tests: [not_null, unique]
+          - name: segment
+            tests:
+              - accepted_values:
+                  values: ['premium', 'standard', 'trial']
+
+models:
+  - name: stg_customer_segments
+    description: "Customer segment and acquisition channel data from the marketing team."
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+      - name: segment
+        tests: [not_null]
+      - name: acquisition_channel
+        tests: [not_null]

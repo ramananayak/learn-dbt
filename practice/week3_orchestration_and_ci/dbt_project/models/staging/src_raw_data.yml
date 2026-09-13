@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: "{{ target.schema }}_raw"
+    description: "Raw simulated OLTP database tables ingested via seeds/ETL."
+    tables:
+      - name: customers
+        identifier: raw_customers
+        description: "Raw customer profile data."
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: email
+            tests:
+              - not_null
+
+      - name: orders
+        identifier: raw_orders
+        description: "Raw order transactions."
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: customer_id
+            tests:
+              - not_null

@@ -1,0 +1,8 @@
+marketing_analytics:
+  target: dev_local
+  outputs:
+    dev_local:
+      type: duckdb
+      path: ./dev_marketing.duckdb
+      schema: main
+      threads: 4

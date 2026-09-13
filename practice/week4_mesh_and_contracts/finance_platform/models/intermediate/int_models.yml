@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: int_daily_revenue
+    description: "Daily revenue aggregated per customer. Internal model — not exposed outside this project."
+    columns:
+      - name: revenue_key
+        description: "Surrogate key on (customer_id, transaction_date)."
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: transaction_date
+        tests: [not_null]
+      - name: net_revenue_usd
+        tests: [not_null]

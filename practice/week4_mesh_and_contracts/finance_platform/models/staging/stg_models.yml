@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: "Cleaned and type-cast financial transactions. Refunds have negative net_amount_usd."
+    columns:
+      - name: transaction_id
+        description: "Unique transaction identifier."
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: transaction_date
+        tests: [not_null]
+      - name: amount_usd
+        description: "Transaction amount in USD (converted from cents). Negative for refunds."
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed', 'refunded', 'pending', 'failed']
+      - name: is_refund
+        tests: [not_null]

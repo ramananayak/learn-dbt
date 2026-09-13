@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_customer_order_summary
+    description: "Intermediate rollup aggregating lifetime order statistics per customer."
+    columns:
+      - name: customer_id
+        description: "Primary key for customer rollup"
+        tests:
+          - not_null
+          - unique
+      - name: total_completed_orders
+        tests:
+          - not_null
+      - name: lifetime_spend_usd
+        tests:
+          - not_null

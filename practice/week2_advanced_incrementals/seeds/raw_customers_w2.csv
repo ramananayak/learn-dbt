@@ -1,0 +1,7 @@
+id,name,email,subscription_status,updated_at
+c_101,Alice Smith,alice@example.com,active,2026-08-01 08:00:00
+c_102,Bob Jones,bob@example.com,pending,2026-08-01 08:30:00
+c_103,Charlie Brown,charlie@example.com,active,2026-08-02 09:15:00
+c_104,Diana Prince,diana@example.com,cancelled,2026-08-02 10:00:00
+c_105,Evan Wright,evan@example.com,active,2026-08-03 11:45:00
+c_106,Frank Daniel,frank@example.com,cancelled,2026-08-04 12:15:00

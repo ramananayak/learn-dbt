@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension table including calculated lifetime spend and loyalty tiers."
+    columns:
+      - name: customer_id
+        description: "Primary key for dim_customers"
+        tests:
+          - not_null
+          - unique
+      - name: email
+        tests:
+          - not_null
+      - name: customer_tier
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Gold', 'Silver', 'Bronze', 'Prospect']
+
+  - name: fct_daily_sales
+    description: "Daily aggregated sales facts and operational revenue metrics."
+    columns:
+      - name: order_date
+        description: "Primary key / date dimension for sales facts"
+        tests:
+          - not_null
+          - unique
+      - name: gross_revenue_usd
+        tests:
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null

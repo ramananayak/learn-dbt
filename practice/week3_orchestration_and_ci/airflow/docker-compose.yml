@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dbt-week3-airflow:latest
+    container_name: dbt_week3_airflow
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+      - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=false
+      - AIRFLOW__CORE__EXECUTE_TASKS_NEW_PYTHON_INTERPRETER=false
+      - AIRFLOW__WEBSERVER__EXPOSE_CONFIG=true
+      - AIRFLOW__CORE__DEFAULT_TIMEZONE=UTC
+      - _AIRFLOW_WWW_USER_CREATE=true
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
+      - DBT_PROFILES_DIR=/opt/airflow/dbt_project
+      - DBT_DUCKDB_PATH=/opt/airflow/dbt_project/dev_analytics.duckdb
+      - DBT_TARGET=dev_local
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ../dbt_project:/opt/airflow/dbt_project
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+    command: airflow standalone
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5

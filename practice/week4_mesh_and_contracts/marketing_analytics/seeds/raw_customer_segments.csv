@@ -1,0 +1,7 @@
+customer_id,segment,acquisition_channel,cohort_month
+c_101,premium,paid_search,2026-06
+c_102,standard,organic,2026-06
+c_103,premium,referral,2026-07
+c_104,standard,paid_social,2026-07
+c_105,premium,organic,2026-07
+c_106,standard,paid_search,2026-08

@@ -1,0 +1,13 @@
+id,customer_id,order_date,status,amount_cents,payment_method
+o_101,c_001,2026-05-01,completed,4500,credit_card
+o_102,c_002,2026-05-01,completed,12000,bank_transfer
+o_103,c_001,2026-05-02,completed,3200,credit_card
+o_104,c_003,2026-05-02,completed,8900,paypal
+o_105,c_004,2026-05-03,returned,1500,credit_card
+o_106,c_005,2026-05-03,completed,6700,paypal
+o_107,c_002,2026-05-04,completed,21000,bank_transfer
+o_108,c_006,2026-05-04,completed,5400,credit_card
+o_109,c_007,2026-05-05,completed,9800,credit_card
+o_110,c_001,2026-05-05,completed,4300,credit_card
+o_111,c_008,2026-05-06,pending,7600,bank_transfer
+o_112,c_003,2026-05-06,completed,11500,paypal

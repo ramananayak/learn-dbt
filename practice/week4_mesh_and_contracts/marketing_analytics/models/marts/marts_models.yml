@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_customer_revenue_by_segment
+    description: >
+      Joins finance revenue (from finance_platform public model) with marketing
+      segment data. Demonstrates dbt Mesh cross-project consumption pattern.
+    columns:
+      - name: customer_id
+        tests: [not_null]
+      - name: transaction_date
+        tests: [not_null]
+      - name: net_revenue_usd
+        tests: [not_null]
+      - name: segment
+        description: "Customer segment from marketing team. NULL if customer not yet segmented."

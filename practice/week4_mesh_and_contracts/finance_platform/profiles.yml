@@ -1,0 +1,8 @@
+finance_platform:
+  target: dev_local
+  outputs:
+    dev_local:
+      type: duckdb
+      path: ./dev_finance.duckdb
+      schema: main
+      threads: 4

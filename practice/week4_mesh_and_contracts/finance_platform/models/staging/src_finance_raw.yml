@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: finance_raw
+    schema: "main_raw"
+    description: "Raw financial transaction data loaded from upstream OLTP systems."
+    tables:
+      - name: raw_transactions
+        identifier: raw_transactions
+        description: "Individual payment transactions from all payment processors."
+        columns:
+          - name: transaction_id
+            tests: [not_null, unique]
+          - name: customer_id
+            tests: [not_null]
+          - name: transaction_date
+            tests: [not_null]
+          - name: amount_cents
+            tests: [not_null]
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['completed', 'refunded', 'pending', 'failed']

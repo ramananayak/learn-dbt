@@ -1,0 +1,46 @@
+name: week3_orchestration_and_ci
+version: '1.0.0'
+config-version: 2
+
+profile: platform_dbt_project
+
+flags:
+  require_generic_test_arguments_property: false
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  week3_orchestration_and_ci:
+    +schema: raw
+    raw_customers:
+      +column_types:
+        id: varchar
+        first_name: varchar
+        last_name: varchar
+        email: varchar
+        signup_date: date
+        country: varchar
+    raw_orders:
+      +column_types:
+        id: varchar
+        customer_id: varchar
+        order_date: date
+        status: varchar
+        amount_cents: integer
+        payment_method: varchar
+
+models:
+  week3_orchestration_and_ci:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

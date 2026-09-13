@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned and typed customer staging view."
+    columns:
+      - name: customer_id
+        description: "Primary key for customer"
+        tests:
+          - not_null
+          - unique
+      - name: email
+        description: "Customer email address"
+        tests:
+          - not_null
+      - name: country_code
+        description: "ISO standard country code"
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Cleaned and typed orders staging view with USD conversion."
+    columns:
+      - name: order_id
+        description: "Primary key for orders"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Foreign key referencing stg_customers"
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: order_status
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['completed', 'returned', 'pending', 'cancelled']
+      - name: order_amount_usd
+        tests:
+          - not_null

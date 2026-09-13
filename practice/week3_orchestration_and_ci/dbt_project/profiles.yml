@@ -1,0 +1,24 @@
+platform_dbt_project:
+  target: "{{ env_var('DBT_TARGET', 'dev_local') }}"
+  outputs:
+    dev_local:
+      type: duckdb
+      path: "{{ env_var('DBT_DUCKDB_PATH', './dev_analytics.duckdb') }}"
+      schema: main
+      threads: 4
+
+    dev_redshift:
+      type: redshift
+      host: "{{ env_var('REDSHIFT_HOST', 'localhost') }}"
+      user: "{{ env_var('REDSHIFT_USER', 'dev') }}"
+      pass: "{{ env_var('REDSHIFT_PASSWORD', 'dev') }}"
+      port: "{{ env_var('REDSHIFT_PORT', '5439') | int }}"
+      dbname: "{{ env_var('REDSHIFT_DBNAME', 'warehouse') }}"
+      schema: "dbt_{{ env_var('USER', 'dev') }}"
+      threads: 4
+
+    ci:
+      type: duckdb
+      path: ./ci_analytics.duckdb
+      schema: "ci_{{ env_var('CI_JOB_ID', 'test') }}"
+      threads: 4

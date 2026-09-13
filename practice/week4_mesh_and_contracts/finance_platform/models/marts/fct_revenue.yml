@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: fct_revenue
+    description: >
+      Governed daily revenue fact table. Public model — accessible to all downstream
+      dbt Mesh projects via cross-project ref(). Schema is contract-enforced: any SQL
+      change that drops or renames a declared column will fail at compile time.
+    access: public
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: revenue_key
+        data_type: varchar
+        description: "Surrogate primary key on (customer_id, transaction_date)."
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests: [not_null, unique]
+      - name: customer_id
+        data_type: varchar
+        description: "Customer identifier."
+        constraints:
+          - type: not_null
+        tests: [not_null]
+      - name: transaction_date
+        data_type: date
+        description: "Date of the aggregated transactions."
+        constraints:
+          - type: not_null
+        tests: [not_null]
+      - name: transaction_count
+        data_type: bigint
+        description: "Total number of transactions on this date for this customer."
+        constraints:
+          - type: not_null
+      - name: refund_count
+        data_type: bigint
+        description: "Number of refund transactions."
+        constraints:
+          - type: not_null
+      - name: gross_revenue_usd
+        data_type: double
+        description: "Sum of completed (non-refund) transaction amounts in USD."
+        constraints:
+          - type: not_null
+      - name: refund_amount_usd
+        data_type: double
+        description: "Sum of refund amounts in USD (negative values)."
+        constraints:
+          - type: not_null
+      - name: net_revenue_usd
+        data_type: double
+        description: "Net revenue after refunds. gross_revenue_usd + refund_amount_usd."
+        constraints:
+          - type: not_null
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Timestamp of the most recently updated transaction in this group."
+        constraints:
+          - type: not_null

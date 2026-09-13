@@ -1,0 +1,9 @@
+id,first_name,last_name,email,signup_date,country
+c_001,Alice,Smith,alice@example.com,2026-01-10,US
+c_002,Bob,Jones,bob@example.com,2026-01-15,US
+c_003,Charlie,Brown,charlie@example.com,2026-02-01,CA
+c_004,Diana,Prince,diana@example.com,2026-02-20,UK
+c_005,Evan,Wright,evan@example.com,2026-03-05,DE
+c_006,Fiona,Gallagher,fiona@example.com,2026-03-12,US
+c_007,George,Clark,george@example.com,2026-04-01,FR
+c_008,Hannah,Abbott,hannah@example.com,2026-04-18,CA

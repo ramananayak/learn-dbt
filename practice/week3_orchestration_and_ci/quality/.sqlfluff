@@ -1,0 +1,32 @@
+[sqlfluff]
+dialect = duckdb
+templater = dbt
+runaway_limit = 10
+max_line_length = 100
+indent_unit = space
+tab_space_size = 4
+
+[sqlfluff:templater:dbt]
+project_dir = ./Code/week3_orchestration_and_ci/dbt_project
+profiles_dir = ./Code/week3_orchestration_and_ci/dbt_project
+target = dev_local
+
+[sqlfluff:indentation]
+indented_joins = false
+indented_using_on = true
+template_blocks_indent = false
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = lower
+
+[sqlfluff:rules:aliasing.table]
+aliasing = explicit
+
+[sqlfluff:rules:aliasing.column]
+aliasing = explicit

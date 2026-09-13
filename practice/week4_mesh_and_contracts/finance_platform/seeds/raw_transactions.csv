@@ -1,0 +1,13 @@
+transaction_id,customer_id,transaction_date,amount_cents,currency,payment_method,status,updated_at
+txn_001,c_101,2026-08-01,12550,USD,credit_card,completed,2026-08-01 09:00:00
+txn_002,c_102,2026-08-01,4500,USD,debit_card,completed,2026-08-01 10:30:00
+txn_003,c_101,2026-08-02,8990,USD,credit_card,completed,2026-08-02 11:00:00
+txn_004,c_103,2026-08-02,21000,USD,bank_transfer,completed,2026-08-02 14:15:00
+txn_005,c_104,2026-08-03,6000,USD,credit_card,refunded,2026-08-03 16:00:00
+txn_006,c_105,2026-08-03,15000,USD,credit_card,completed,2026-08-03 17:30:00
+txn_007,c_101,2026-08-04,7525,USD,debit_card,completed,2026-08-04 12:00:00
+txn_008,c_102,2026-08-04,11000,USD,credit_card,completed,2026-08-04 15:45:00
+txn_009,c_103,2026-08-05,32000,USD,bank_transfer,completed,2026-08-05 09:30:00
+txn_010,c_105,2026-08-05,9500,USD,credit_card,completed,2026-08-05 18:20:00
+txn_011,c_101,2026-08-06,5000,USD,credit_card,completed,2026-08-06 10:00:00
+txn_012,c_106,2026-08-06,10000,USD,debit_card,completed,2026-08-06 11:00:00

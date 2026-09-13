@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fct_daily_customer_orders_w2
+    description: "Daily customer order aggregations built incrementally with lookback window"
+    columns:
+      - name: customer_order_key
+        description: "Surrogate primary key: hash(customer_id, order_date)"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Customer identifier (Distkey on Redshift)"
+        tests:
+          - not_null
+      - name: order_date
+        description: "Date of order aggregation (Sortkey on Redshift)"
+        tests:
+          - not_null
+      - name: total_orders
+        description: "Total order count for the customer on that date"
+      - name: total_revenue_usd
+        description: "Sum of order gross amounts in USD"
+      - name: last_updated_at
+        description: "Latest update timestamp included in the daily aggregate"

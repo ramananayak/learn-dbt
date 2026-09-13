@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_orders_w2
+    description: "Cleaned and typed staging model for orders"
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key to customer"
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: order_status
+      - name: gross_amount_usd
+      - name: updated_at
+
+  - name: stg_customers_w2
+    description: "Cleaned and typed staging model for customer entities"
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+      - name: email
+      - name: subscription_status
+      - name: updated_at
